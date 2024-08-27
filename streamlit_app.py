@@ -81,16 +81,20 @@ if user_access_level:
                 st.write("5: once selected, initiate Pathwise run")
                 if st.button("Process"):
                     run_count = 0
+                    file_count = 0
                     for this_boolean in new_array:
                          if this_boolean:
                              if run_setting_IFRS17:
                                  st.write(f"run: {prod_name_array[run_count]}, for: IFRS17 with PWOR script")
+                                 file_count = file_count + 1
                              if run_setting_EV:
                                  st.write(f"run: {prod_name_array[run_count]}, for: EV with PWOR script")
+                                 file_count = file_count + 1
                              if run_setting_RBC:
-                                 st.write(f"run: {prod_name_array[run_count]}, for: RBC with PWOR script")  
+                                 st.write(f"run: {prod_name_array[run_count]}, for: RBC with PWOR script")
+                                 file_count = file_count + 1
                          run_count = run_count + 1
-                    st.write(f"now move {run_count} file(s) each with 'PW python PWOR script' into trigger directory and listen for results")
+                    st.write(f"now move {file_count} file(s) each with 'PW python PWOR script' into trigger directory and listen for results")
                 #
                 st.title("5: Listen until result file lands in our results folder")
                 #
