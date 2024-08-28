@@ -66,21 +66,21 @@ if user_access_level:
                 prod_name_array = ["" for _ in range(num_of_liab)]
                 # count = 0
                 st.write("Product")
-                # my_array = []
+                my_array = []
                 for this_boolean in access_array:
                      if this_boolean:
                          # st.write(f"choose to run: {i_count}")
                          new_array[i_count] = st.checkbox(f"Liability {i_count}")
-                         # my_array.append(f"Liability{i_count}")
+                         my_array.append(f"Liability{i_count}")
                          if new_array[i_count]:
                              prod_name_array[i_count] = f"Liab{i_count}"
                      i_count = i_count + 1
                 # 
-                # selected_items = st.multiselect('Select items:', my_array)
-                # if selected_items:
-                #     this_df = pd.DataFrame(selected_items, columns=['Selected Items'])
-                #     st.dataframe(this_df)
-                # #end if
+                selected_items = st.multiselect('Select items:', my_array)
+                if selected_items:
+                    this_df = pd.DataFrame(selected_items, columns=['Selected Items'])
+                    st.dataframe(this_df)
+                # end if
                 # after this the variable selected_items only contains those selected thru the UI/UX interface
                 #
                 st.write("Run type")
