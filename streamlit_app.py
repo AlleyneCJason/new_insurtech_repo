@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 
 # Questions and options
 questions = [
@@ -97,17 +96,4 @@ for i, (question, data) in enumerate(zip(questions, data_per_question)):
         'Counts':data
     })
     st.table(df)
-
-    # Plot the data
-    #plt.figure()
-    #plt.bar(df['Options'], df['Counts'])
-    #plt.xlabel('Options')
-    #plt.ylabel('Counts')
-    #plt.title(question)
-    #st.pyplot(plt)
-    plt.figure()
-    plt.bar(dfsimple['Opt'], dfsimple['Counts'])
-    plt.xlabel('Answers')
-    plt.ylabel('Counts')
-    plt.title(question)
-    st.pyplot(plt)
+    st.bar_chart(dfsimple.set_index('Opt'))
