@@ -69,9 +69,9 @@ if st.button("Submit Answer"):
     update_csv()
     st.success("Answer recorded!")
     # Ask the user to enter their email address
-    email = st.text_input("Please enter your email address:")
-    if st.button("Click to learn about AON PathWise"):
-        st.success("You will receive an email with our introductory information")
+    email = st.text_input("Email address:")
+    if st.button("Enter your email, then click here to learn more about AON's Life Risk Modeling Solution (PathWise)"):
+        st.success("Thank you, we will email you a copy of our introductory information and contact details")
         AACemails.append(email)
         update_emails()
         # Further logic for email handling can be added here
