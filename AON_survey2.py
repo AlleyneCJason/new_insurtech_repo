@@ -71,8 +71,7 @@ if st.button("Submit Answer"):
     update_csv()
     AACemails.append(email)
     update_emails()
-    if st.button("ok"):
-        st.success("Thank you, you will receive an email with an introduction to AON's Life Risk Modeling Solution (PathWise)")
+    st.write("Thank you, you will receive an email with an introduction to AON's Life Risk Modeling Solution (PathWise)")
 
 # Read the existing CSV into CSVarray
 try:
