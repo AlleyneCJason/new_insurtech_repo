@@ -48,7 +48,7 @@ def update_emails(email):
     try:
         # Read the existing file into EMarray
         EMdf = pd.read_csv('EMcsv.csv')
-        EMarray = EMdf['Email'].tolist()
+        EMarray = EMdf.tolist()
     except FileNotFoundError:
         # If the file does not exist, create an array with noname
         EMarray = []
