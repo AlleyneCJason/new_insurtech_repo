@@ -46,7 +46,7 @@ def update_csv():
 
 # Define function to update emails
 def update_emails(email, answers):
-    new_row = [email, answers[1], answers[2], answers[3], answers[4], answers[5]]
+    new_row = [email, answers[0], answers[1], answers[2], answers[3], answers[4] ]
     #append the new row to the CSV file
     with open('EMcsv.csv', mode = 'a', newline = '') as file:
         writer = csv.writer(file)
