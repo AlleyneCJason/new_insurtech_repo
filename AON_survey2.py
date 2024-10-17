@@ -65,7 +65,7 @@ def update_emails():
 if st.button("Submit Answer"):
     # Clear the screen
     # st.empty()
-    st.success("Enter a valid email to have your above selections recorded!")
+    st.success("Enter a valid email to have your selections recorded!")
     # Ask the user to enter their email address
     email = st.text_input("Submit email address:")
     if email:
