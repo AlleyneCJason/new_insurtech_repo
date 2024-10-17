@@ -64,14 +64,13 @@ def update_emails():
 
 if st.button("Submit Answer"):
     # Clear the screen
-    st.empty()
-    # store data
-    update_csv()
-    st.success("Answer recorded!")
+    # st.empty()
+    st.success("Enter a valid email to have your above selections will be recorded!")
     # Ask the user to enter their email address
     email = st.text_input("Email address:")
-    if st.button("Enter your email, then click here to learn more about AON's Life Risk Modeling Solution (PathWise)"):
-        st.success("Thank you, we will email you a copy of our introductory information and contact details")
+    if st.button("Submit email"):
+        update_csv()
+        st.success("Thank you, you will receive an email with an introduction to AON's Life Risk Modeling Solution (PathWise)")
         AACemails.append(email)
         update_emails()
         # Further logic for email handling can be added here
