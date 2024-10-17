@@ -58,18 +58,17 @@ def update_emails(AACemail):
     # Overwrite the EM file
     pd.DataFrame([EMarray]).to_csv('EMcsv.csv', index=False, header=False)
 
-    
-
 if st.button("Capture Answers"):
     # Clear the screen
     # st.empty()
     st.success("Enter a valid email to have your selections recorded!")
-    # Ask the user to enter their email address
-    AACemail = st.text_input("Please enter your email address:")
-    if st.button("Submit Answers"):
-        update_csv()
-        update_emails(AACemail)
-        st.success("Thank you, you will receive an email with an introduction to AON's Life Risk Modeling Solution (PathWise)")
+
+# Ask the user to enter their email address
+AACemail = st.text_input("Please enter your email address:")
+if st.button("Submit email and answers"):
+    update_csv()
+    update_emails(AACemail)
+    st.success("Thank you, you will receive an email with an introduction to AON's Life Risk Modeling Solution (PathWise)")
 
 # Read the existing CSV into CSVarray
 try:
