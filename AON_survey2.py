@@ -44,19 +44,18 @@ def update_csv():
     pd.DataFrame([CSVarray]).to_csv('QAcsv.csv', index=False, header=False)
 
 # Define function to update emails
-def update_emails(AACemail):
+def update_emails(email):
     try:
         # Read the existing file into EMarray
-        EMarray = pd.read_csv('EMcsv.csv', header=None).values.flatten()
+        EMdf = pd.read_csv('EMcsv.csv')
+        EMarray = EMdf['Email'].tolist()
     except FileNotFoundError:
         # If the file does not exist, create an array with noname
         EMarray = ["nonames"]
-
     # Update EMarray with one more choice selection count
-    EMarray.apprend(AACemail)
-    
+    EMarray.apprend(email)
     # Overwrite the EM file
-    pd.DataFrame([EMarray]).to_csv('EMcsv.csv', index=False, header=False)
+    pd.DataFrame([EMarray], columns=['Email']).to_csv('EMcsv.csv', index=False)
 
 if st.button("Capture Answers"):
     # Clear the screen
