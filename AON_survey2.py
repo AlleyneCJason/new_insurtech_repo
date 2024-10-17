@@ -21,7 +21,6 @@ options = [
 
 # Collect user responses
 QAarray = []
-AACemails = []
 
 for i, question in enumerate(questions):
     answer = st.radio(question, options[i])
@@ -45,17 +44,16 @@ def update_csv():
     pd.DataFrame([CSVarray]).to_csv('QAcsv.csv', index=False, header=False)
 
 # Define function to update emails
-def update_emails():
+def update_emails(AACemail):
     try:
-        # Read the existing CSV into CSVarray
+        # Read the existing file into EMarray
         EMarray = pd.read_csv('EMcsv.csv', header=None).values.flatten()
     except FileNotFoundError:
-        # If the file does not exist, create an array with zero counts
-        EMarray = [0] * (len(options) * len(questions))
+        # If the file does not exist, create an array with noname
+        EMarray = ["nonames"]
 
     # Update EMarray with one more choice selection count
-    for idx, val in enumerate(AACemails):
-        EMarray[idx * len(options[0]) + val] += 1
+    EMarray.apprend(AACemail)
     
     # Overwrite the EM file
     pd.DataFrame([EMarray]).to_csv('EMcsv.csv', index=False, header=False)
@@ -67,10 +65,9 @@ if st.button("Submit Answer"):
     # st.empty()
     st.success("Enter a valid email to have your selections recorded!")
     # Ask the user to enter their email address
-    email = st.text_input("Submit email address:")
+    AACemail = st.text_input("Submit email address:")
     update_csv()
-    AACemails.append(email)
-    update_emails()
+    update_emails(AACemail)
     st.write("Thank you, you will receive an email with an introduction to AON's Life Risk Modeling Solution (PathWise)")
 
 # Read the existing CSV into CSVarray
