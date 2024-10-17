@@ -53,7 +53,7 @@ def update_emails(email):
         # If the file does not exist, create an array with noname
         EMarray = ["nonames"]
     # Update EMarray with one more choice selection count
-    EMarray.apprend(email)
+    EMarray.append(email)
     # Overwrite the EM file
     pd.DataFrame([EMarray], columns=['Email']).to_csv('EMcsv.csv', index=False)
 
