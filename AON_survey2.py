@@ -68,13 +68,11 @@ if st.button("Submit Answer"):
     st.success("Enter a valid email to have your selections recorded!")
     # Ask the user to enter their email address
     email = st.text_input("Submit email address:")
-    if email:
-        update_csv()
+    update_csv()
+    AACemails.append(email)
+    update_emails()
+    if st.button("ok"):
         st.success("Thank you, you will receive an email with an introduction to AON's Life Risk Modeling Solution (PathWise)")
-        AACemails.append(email)
-        update_emails()
-        # Further logic for email handling can be added here
-
 
 # Read the existing CSV into CSVarray
 try:
