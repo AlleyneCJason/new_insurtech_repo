@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import csv
 #import matplotlib.pyplot as plt
 
 # Questions and options
@@ -44,17 +45,12 @@ def update_csv():
     pd.DataFrame([CSVarray]).to_csv('QAcsv.csv', index=False, header=False)
 
 # Define function to update emails
-def update_emails(email):
-    try:
-        # Read the existing file into EMarray
-        EMarray = pd.read_csv('EMcsv.csv')
-    except FileNotFoundError:
-        # If the file does not exist, create an array with noname
-        EMarray = []
-    # Update EMarray with one more choice selection count
-    EMarray = EMarray.append(email, ignore_index = True)
-    # Overwrite the EM file
-    EMarray.to_csv('EMcsv.csv', index = False)
+def update_emails(email, answers):
+    new_row = [email, answers[1], answers[2], answers[3], answers[4], answers[5]]
+    #append the new row to the CSV file
+    with open('EMcsv.csv', mode = 'a', newline = '') as file:
+        writer = csv.writer(file)
+        writer.writerow(new_row)
 
 if st.button("Capture Answers"):
     # Clear the screen
@@ -65,7 +61,7 @@ if st.button("Capture Answers"):
 AACemail = st.text_input("Please enter your email address:")
 if st.button("Submit email and answers"):
     update_csv()
-    update_emails(AACemail)
+    update_emails(AACemail, QAarray)
     st.success("Thank you, you will receive an email with an introduction to AON's Life Risk Modeling Solution (PathWise)")
 
 # Read the existing CSV into CSVarray
