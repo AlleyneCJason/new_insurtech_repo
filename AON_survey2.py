@@ -47,15 +47,14 @@ def update_csv():
 def update_emails(email):
     try:
         # Read the existing file into EMarray
-        EMdf = pd.read_csv('EMcsv.csv')
-        EMarray = EMdf.tolist()
+        EMarray = pd.read_csv('EMcsv.csv')
     except FileNotFoundError:
         # If the file does not exist, create an array with noname
         EMarray = []
     # Update EMarray with one more choice selection count
-    EMarray.append(email)
+    EMarray = EMarray.append(email, ignore_index = True)
     # Overwrite the EM file
-    pd.DataFrame([EMarray]).to_csv('EMcsv.csv')
+    EMarray.to_csv('EMcsv.csv', index = False)
 
 if st.button("Capture Answers"):
     # Clear the screen
