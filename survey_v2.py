@@ -90,7 +90,7 @@ if st.button("Submit email and answers"):
 passcode = st.text_input("Password:")
 
 if st.button("Login"):
-    if passcode = "aonhongkong":
+    if passcode == "aonhongkong":
         with open('EMcsv.csv', 'r') as file:
             email_lst = [line.rstrip('\n') for line in file]
         st.write(email_lst)
